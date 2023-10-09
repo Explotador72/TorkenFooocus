@@ -1,0 +1,11 @@
+{
+    "modelfile_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\checkpoints",
+    "lorafile_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\loras",
+    "vae_approx_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\vae_approx",
+    "upscale_models_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\upscale_models",
+    "inpaint_models_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\inpaint",
+    "fooocus_expansion_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\prompt_expansion\\fooocus_expansion",
+    "temp_outputs_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\outputs",
+    "controlnet_models_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\controlnet",
+    "clip_vision_models_path": "C:\\Core\\SDImages\\SDXLFooocus\\repositories\\Fooocus\\models\\clip_vision"
+}
