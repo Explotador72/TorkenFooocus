@@ -267,7 +267,7 @@ class Text2ImgRequest(BaseModel):
     base_model_name: str = 'sd_xl_base_1.0_0.9vae.safetensors'
     refiner_model_name: str = 'sd_xl_refiner_1.0_0.9vae.safetensors'
     loras: List[Lora] = Field(default=[
-        Lora(model_name='sd_xl_offset_example-lora_1.0.safetensors', weight=0.5)], max_length=5)
+        Lora(model_name='sd_xl_offset_example-lora_1.0.safetensors', weight=0.5)])
 
 
 class ImgUpscaleOrVaryRequest(Text2ImgRequest):
