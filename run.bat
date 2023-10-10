@@ -1,4 +1,2 @@
-.\python_embeded\python.exe -s Fooocus\entry_with_update.py --share
+.\main.py
 pause
-
-set COMMANDLINE_ARGS=--api
