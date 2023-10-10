@@ -1,0 +1,1497 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/v1/generation/text-to-image": {
+            "post": {
+                "summary": "Text2Img Generation",
+                "operationId": "text2img_generation_v1_generation_text_to_image_post",
+                "parameters": [
+                    {
+                        "name": "accept",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes",
+                            "title": "Accept"
+                        },
+                        "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes"
+                    },
+                    {
+                        "name": "accept",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Accept"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Text2ImgRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PNG bytes if request's 'Accept' header is 'image/png', otherwise JSON",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GeneratedImageBase64"
+                                    },
+                                    "title": "Response Text2Img Generation V1 Generation Text To Image Post"
+                                },
+                                "example": [
+                                    {
+                                        "base64": "...very long string...",
+                                        "seed": 1050625087,
+                                        "finish_reason": "SUCCESS"
+                                    }
+                                ]
+                            },
+                            "image/png": {
+                                "example": "PNG bytes, what did you expect?"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/generation/image-upscale-vary": {
+            "post": {
+                "summary": "Img Upscale Or Vary",
+                "operationId": "img_upscale_or_vary_v1_generation_image_upscale_vary_post",
+                "parameters": [
+                    {
+                        "name": "accept",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes",
+                            "title": "Accept"
+                        },
+                        "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes"
+                    },
+                    {
+                        "name": "accept",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Accept"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_img_upscale_or_vary_v1_generation_image_upscale_vary_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PNG bytes if request's 'Accept' header is 'image/png', otherwise JSON",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GeneratedImageBase64"
+                                    },
+                                    "title": "Response Img Upscale Or Vary V1 Generation Image Upscale Vary Post"
+                                },
+                                "example": [
+                                    {
+                                        "base64": "...very long string...",
+                                        "seed": 1050625087,
+                                        "finish_reason": "SUCCESS"
+                                    }
+                                ]
+                            },
+                            "image/png": {
+                                "example": "PNG bytes, what did you expect?"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/generation/image-inpait-outpaint": {
+            "post": {
+                "summary": "Img Inpaint Or Outpaint",
+                "operationId": "img_inpaint_or_outpaint_v1_generation_image_inpait_outpaint_post",
+                "parameters": [
+                    {
+                        "name": "accept",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes",
+                            "title": "Accept"
+                        },
+                        "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes"
+                    },
+                    {
+                        "name": "accept",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Accept"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_img_inpaint_or_outpaint_v1_generation_image_inpait_outpaint_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PNG bytes if request's 'Accept' header is 'image/png', otherwise JSON",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GeneratedImageBase64"
+                                    },
+                                    "title": "Response Img Inpaint Or Outpaint V1 Generation Image Inpait Outpaint Post"
+                                },
+                                "example": [
+                                    {
+                                        "base64": "...very long string...",
+                                        "seed": 1050625087,
+                                        "finish_reason": "SUCCESS"
+                                    }
+                                ]
+                            },
+                            "image/png": {
+                                "example": "PNG bytes, what did you expect?"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/generation/image-prompt": {
+            "post": {
+                "summary": "Img Prompt",
+                "operationId": "img_prompt_v1_generation_image_prompt_post",
+                "parameters": [
+                    {
+                        "name": "accept",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes",
+                            "title": "Accept"
+                        },
+                        "description": "Parameter to overvide 'Accept' header, 'image/png' for output bytes"
+                    },
+                    {
+                        "name": "accept",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "title": "Accept"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Body_img_prompt_v1_generation_image_prompt_post"
+                                    }
+                                ],
+                                "title": "Body"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PNG bytes if request's 'Accept' header is 'image/png', otherwise JSON",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GeneratedImageBase64"
+                                    },
+                                    "title": "Response Img Prompt V1 Generation Image Prompt Post"
+                                },
+                                "example": [
+                                    {
+                                        "base64": "...very long string...",
+                                        "seed": 1050625087,
+                                        "finish_reason": "SUCCESS"
+                                    }
+                                ]
+                            },
+                            "image/png": {
+                                "example": "PNG bytes, what did you expect?"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AspectRatio": {
+                "type": "string",
+                "enum": [
+                    "704×1408",
+                    "704×1344",
+                    "768×1344",
+                    "768×1280",
+                    "832×1216",
+                    "832×1152",
+                    "896×1152",
+                    "896×1088",
+                    "960×1088",
+                    "960×1024",
+                    "1024×1024",
+                    "1024×960",
+                    "1088×960",
+                    "1088×896",
+                    "1152×896",
+                    "1152×832",
+                    "1216×832",
+                    "1280×768",
+                    "1344×768",
+                    "1344×704",
+                    "1408×704",
+                    "1472×704",
+                    "1536×640",
+                    "1600×640",
+                    "1664×576",
+                    "1728×576"
+                ],
+                "title": "AspectRatio"
+            },
+            "Body_img_inpaint_or_outpaint_v1_generation_image_inpait_outpaint_post": {
+                "properties": {
+                    "input_image": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Input Image",
+                        "description": "Init image for inpaint or outpaint"
+                    },
+                    "input_mask": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Input Mask",
+                        "description": "Inpaint or outpaint mask"
+                    },
+                    "outpaint_selections": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Outpaint Selections",
+                        "description": "Outpaint expansion selections, literal 'Left', 'Right', 'Top', 'Bottom' seperated by comma",
+                        "default": []
+                    },
+                    "prompt": {
+                        "type": "string",
+                        "title": "Prompt",
+                        "default": ""
+                    },
+                    "negative_prompt": {
+                        "type": "string",
+                        "title": "Negative Prompt",
+                        "default": ""
+                    },
+                    "style_selections": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Style Selections",
+                        "description": "Fooocus style selections, seperated by comma",
+                        "default": [
+                            "Fooocus V2",
+                            "Default (Slightly Cinematic)"
+                        ]
+                    },
+                    "performance_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PerfomanceSelection"
+                            }
+                        ],
+                        "default": "Speed"
+                    },
+                    "aspect_ratios_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AspectRatio"
+                            }
+                        ],
+                        "default": "1152×896"
+                    },
+                    "image_number": {
+                        "type": "integer",
+                        "maximum": 32,
+                        "minimum": 1,
+                        "title": "Image Number",
+                        "description": "Image number",
+                        "default": 1
+                    },
+                    "image_seed": {
+                        "type": "integer",
+                        "title": "Image Seed",
+                        "description": "Seed to generate image, -1 for random",
+                        "default": -1
+                    },
+                    "sharpness": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 0,
+                        "title": "Sharpness",
+                        "default": 2
+                    },
+                    "guidance_scale": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 1,
+                        "title": "Guidance Scale",
+                        "default": 7
+                    },
+                    "base_model_name": {
+                        "type": "string",
+                        "title": "Base Model Name",
+                        "default": "sd_xl_base_1.0_0.9vae.safetensors"
+                    },
+                    "refiner_model_name": {
+                        "type": "string",
+                        "title": "Refiner Model Name",
+                        "default": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                    },
+                    "l1": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L1",
+                        "default": "sd_xl_offset_example-lora_1.0.safetensors"
+                    },
+                    "w1": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W1",
+                        "default": 0.5
+                    },
+                    "l2": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L2"
+                    },
+                    "w2": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W2",
+                        "default": 0.5
+                    },
+                    "l3": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L3"
+                    },
+                    "w3": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W3",
+                        "default": 0.5
+                    },
+                    "l4": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L4"
+                    },
+                    "w4": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W4",
+                        "default": 0.5
+                    },
+                    "l5": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L5"
+                    },
+                    "w5": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W5",
+                        "default": 0.5
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "input_image"
+                ],
+                "title": "Body_img_inpaint_or_outpaint_v1_generation_image_inpait_outpaint_post"
+            },
+            "Body_img_prompt_v1_generation_image_prompt_post": {
+                "properties": {
+                    "cn_img1": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Cn Img1",
+                        "description": "Input image for image prompt"
+                    },
+                    "cn_stop1": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Cn Stop1",
+                        "description": "Stop at for image prompt",
+                        "default": 0.4
+                    },
+                    "cn_weight1": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "maximum": 2,
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cn Weight1",
+                        "description": "Weight for image prompt, None for default value"
+                    },
+                    "cn_type1": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ControlNetType"
+                            }
+                        ],
+                        "description": "ControlNet type for image prompt",
+                        "default": "Image Prompt"
+                    },
+                    "cn_img2": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Cn Img2",
+                        "description": "Input image for image prompt"
+                    },
+                    "cn_stop2": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Cn Stop2",
+                        "description": "Stop at for image prompt",
+                        "default": 0.4
+                    },
+                    "cn_weight2": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "maximum": 2,
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cn Weight2",
+                        "description": "Weight for image prompt, None for default value"
+                    },
+                    "cn_type2": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ControlNetType"
+                            }
+                        ],
+                        "description": "ControlNet type for image prompt",
+                        "default": "Image Prompt"
+                    },
+                    "cn_img3": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Cn Img3",
+                        "description": "Input image for image prompt"
+                    },
+                    "cn_stop3": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Cn Stop3",
+                        "description": "Stop at for image prompt",
+                        "default": 0.4
+                    },
+                    "cn_weight3": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "maximum": 2,
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cn Weight3",
+                        "description": "Weight for image prompt, None for default value"
+                    },
+                    "cn_type3": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ControlNetType"
+                            }
+                        ],
+                        "description": "ControlNet type for image prompt",
+                        "default": "Image Prompt"
+                    },
+                    "cn_img4": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Cn Img4",
+                        "description": "Input image for image prompt"
+                    },
+                    "cn_stop4": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Cn Stop4",
+                        "description": "Stop at for image prompt",
+                        "default": 0.4
+                    },
+                    "cn_weight4": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "maximum": 2,
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cn Weight4",
+                        "description": "Weight for image prompt, None for default value"
+                    },
+                    "cn_type4": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ControlNetType"
+                            }
+                        ],
+                        "description": "ControlNet type for image prompt",
+                        "default": "Image Prompt"
+                    },
+                    "prompt": {
+                        "type": "string",
+                        "title": "Prompt",
+                        "default": ""
+                    },
+                    "negative_prompt": {
+                        "type": "string",
+                        "title": "Negative Prompt",
+                        "default": ""
+                    },
+                    "style_selections": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Style Selections",
+                        "description": "Fooocus style selections, seperated by comma",
+                        "default": [
+                            "Fooocus V2",
+                            "Default (Slightly Cinematic)"
+                        ]
+                    },
+                    "performance_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PerfomanceSelection"
+                            }
+                        ],
+                        "default": "Speed"
+                    },
+                    "aspect_ratios_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AspectRatio"
+                            }
+                        ],
+                        "default": "1152×896"
+                    },
+                    "image_number": {
+                        "type": "integer",
+                        "maximum": 32,
+                        "minimum": 1,
+                        "title": "Image Number",
+                        "description": "Image number",
+                        "default": 1
+                    },
+                    "image_seed": {
+                        "type": "integer",
+                        "title": "Image Seed",
+                        "description": "Seed to generate image, -1 for random",
+                        "default": -1
+                    },
+                    "sharpness": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 0,
+                        "title": "Sharpness",
+                        "default": 2
+                    },
+                    "guidance_scale": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 1,
+                        "title": "Guidance Scale",
+                        "default": 7
+                    },
+                    "base_model_name": {
+                        "type": "string",
+                        "title": "Base Model Name",
+                        "default": "sd_xl_base_1.0_0.9vae.safetensors"
+                    },
+                    "refiner_model_name": {
+                        "type": "string",
+                        "title": "Refiner Model Name",
+                        "default": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                    },
+                    "l1": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L1",
+                        "default": "sd_xl_offset_example-lora_1.0.safetensors"
+                    },
+                    "w1": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W1",
+                        "default": 0.5
+                    },
+                    "l2": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L2"
+                    },
+                    "w2": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W2",
+                        "default": 0.5
+                    },
+                    "l3": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L3"
+                    },
+                    "w3": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W3",
+                        "default": 0.5
+                    },
+                    "l4": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L4"
+                    },
+                    "w4": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W4",
+                        "default": 0.5
+                    },
+                    "l5": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L5"
+                    },
+                    "w5": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W5",
+                        "default": 0.5
+                    }
+                },
+                "type": "object",
+                "title": "Body_img_prompt_v1_generation_image_prompt_post"
+            },
+            "Body_img_upscale_or_vary_v1_generation_image_upscale_vary_post": {
+                "properties": {
+                    "input_image": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "Input Image",
+                        "description": "Init image for upsacale or outpaint"
+                    },
+                    "uov_method": {
+                        "$ref": "#/components/schemas/UpscaleOrVaryMethod"
+                    },
+                    "prompt": {
+                        "type": "string",
+                        "title": "Prompt",
+                        "default": ""
+                    },
+                    "negative_prompt": {
+                        "type": "string",
+                        "title": "Negative Prompt",
+                        "default": ""
+                    },
+                    "style_selections": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Style Selections",
+                        "description": "Fooocus style selections, seperated by comma",
+                        "default": [
+                            "Fooocus V2",
+                            "Default (Slightly Cinematic)"
+                        ]
+                    },
+                    "performance_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PerfomanceSelection"
+                            }
+                        ],
+                        "default": "Speed"
+                    },
+                    "aspect_ratios_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AspectRatio"
+                            }
+                        ],
+                        "default": "1152×896"
+                    },
+                    "image_number": {
+                        "type": "integer",
+                        "maximum": 32,
+                        "minimum": 1,
+                        "title": "Image Number",
+                        "description": "Image number",
+                        "default": 1
+                    },
+                    "image_seed": {
+                        "type": "integer",
+                        "title": "Image Seed",
+                        "description": "Seed to generate image, -1 for random",
+                        "default": -1
+                    },
+                    "sharpness": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 0,
+                        "title": "Sharpness",
+                        "default": 2
+                    },
+                    "guidance_scale": {
+                        "type": "number",
+                        "maximum": 30,
+                        "minimum": 1,
+                        "title": "Guidance Scale",
+                        "default": 7
+                    },
+                    "base_model_name": {
+                        "type": "string",
+                        "title": "Base Model Name",
+                        "default": "sd_xl_base_1.0_0.9vae.safetensors"
+                    },
+                    "refiner_model_name": {
+                        "type": "string",
+                        "title": "Refiner Model Name",
+                        "default": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                    },
+                    "l1": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L1",
+                        "default": "sd_xl_offset_example-lora_1.0.safetensors"
+                    },
+                    "w1": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W1",
+                        "default": 0.5
+                    },
+                    "l2": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L2"
+                    },
+                    "w2": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W2",
+                        "default": 0.5
+                    },
+                    "l3": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L3"
+                    },
+                    "w3": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W3",
+                        "default": 0.5
+                    },
+                    "l4": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L4"
+                    },
+                    "w4": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W4",
+                        "default": 0.5
+                    },
+                    "l5": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "L5"
+                    },
+                    "w5": {
+                        "type": "number",
+                        "maximum": 2,
+                        "minimum": -2,
+                        "title": "W5",
+                        "default": 0.5
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "input_image",
+                    "uov_method"
+                ],
+                "title": "Body_img_upscale_or_vary_v1_generation_image_upscale_vary_post"
+            },
+            "ControlNetType": {
+                "type": "string",
+                "enum": [
+                    "Image Prompt",
+                    "PyraCanny",
+                    "CPDS"
+                ],
+                "title": "ControlNetType"
+            },
+            "FooocusStyle": {
+                "type": "string",
+                "enum": [
+                    "Fooocus V2",
+                    "Default (Slightly Cinematic)",
+                    "SAI 3D Model",
+                    "SAI Analog Film",
+                    "SAI Anime",
+                    "SAI Cinematic",
+                    "SAI Comic Book",
+                    "SAI Craft Clay",
+                    "SAI Digital Art",
+                    "SAI Enhance",
+                    "SAI Fantasy Art",
+                    "SAI Isometric",
+                    "SAI Line Art",
+                    "SAI Lowpoly",
+                    "SAI Neonpunk",
+                    "SAI Prigami",
+                    "SAI Photographic",
+                    "SAI Pixel Art",
+                    "SAI Texture",
+                    "Ads Advertising",
+                    "Ads Automotive",
+                    "Ads Corporate",
+                    "Ads Fashion Editorial",
+                    "Ads Food Photography",
+                    "Ads Luxury",
+                    "Ads Real Estate",
+                    "Ads Retail",
+                    "Artstyle Abstract",
+                    "Artstyle Abstract Expressionism",
+                    "Artstyle Art Deco",
+                    "Artstyle Art Nouveau",
+                    "Artstyle Constructivist",
+                    "Artstyle Cubist",
+                    "Artstyle Expressionist",
+                    "Artstyle Graffiti",
+                    "Artstyle Hyperrealism",
+                    "Artstyle Impressionist",
+                    "Artstyle Pointillism",
+                    "Artstyle Pop Art",
+                    "Artstyle Psychedelic",
+                    "Artstyle Renaissance",
+                    "Artstyle Steampunk",
+                    "Artstyle Surrealist",
+                    "Artstyle Typography",
+                    "Artstyle Watercolor",
+                    "Futuristic Biomechanical",
+                    "Futuristic Biomechanical Cyberpunk",
+                    "Futuristic Cybernetic",
+                    "Futuristic Cybernetic Robot",
+                    "Futuristic Cyberpunk Cityscape",
+                    "Futuristic Futuristic",
+                    "Futuristic Retro Cyberpunk",
+                    "Futuristic Retro Futurism",
+                    "Futuristic Sci Fi",
+                    "Futuristic Vaporwave",
+                    "Game Bubble Bobble",
+                    "Game Cyberpunk Game",
+                    "Game Fighting Game",
+                    "Game Gta",
+                    "Game Mario",
+                    "Game Minecraft",
+                    "Game Pokemon",
+                    "Game Retro Arcade",
+                    "Game Retro Game",
+                    "Game Rpg Fantasy Game",
+                    "Game Strategy Game",
+                    "Game Streetfighter",
+                    "Game Zelda",
+                    "Misc Architectural",
+                    "Misc Disco",
+                    "Misc Dreamscape",
+                    "Misc Dystopian",
+                    "Misc Fairy Tale",
+                    "Misc Gothic",
+                    "Misc Grunge",
+                    "Misc Horror",
+                    "Misc Kawaii",
+                    "Misc Lovecraftian",
+                    "Misc Macabre",
+                    "Misc Manga",
+                    "Misc Metropolis",
+                    "Misc Minimalist",
+                    "Misc Monochrome",
+                    "Misc Nautical",
+                    "Misc Space",
+                    "Misc Stained Glass",
+                    "Misc Techwear Fashion",
+                    "Misc Tribal",
+                    "Misc Zentangle",
+                    "Papercraft Collage",
+                    "Papercraft Flat Papercut",
+                    "Papercraft Kirigami",
+                    "Papercraft Paper Mache",
+                    "Papercraft Paper Quilling",
+                    "Papercraft Papercut Collage",
+                    "Papercraft Papercut Shadow Box",
+                    "Papercraft Stacked Papercut",
+                    "Papercraft Thick Layered Papercut",
+                    "Photo Alien",
+                    "Photo Film Noir",
+                    "Photo Hdr",
+                    "Photo Long Exposure",
+                    "Photo Neon Noir",
+                    "Photo Silhouette",
+                    "Photo Tilt Shift",
+                    "Cinematic Diva",
+                    "Abstract Expressionism",
+                    "Academia",
+                    "Action Figure",
+                    "Adorable 3D Character",
+                    "Adorable Kawaii",
+                    "Art Deco",
+                    "Art Nouveau",
+                    "Astral Aura",
+                    "Avant Garde",
+                    "Baroque",
+                    "Bauhaus Style Poster",
+                    "Blueprint Schematic Drawing",
+                    "Caricature",
+                    "Cel Shaded Art",
+                    "Character Design Sheet",
+                    "Classicism Art",
+                    "Color Field Painting",
+                    "Colored Pencil Art",
+                    "Conceptual Art",
+                    "Constructivism",
+                    "Cubism",
+                    "Dadaism",
+                    "Dark Fantasy",
+                    "Dark Moody Atmosphere",
+                    "DMT Art Style",
+                    "Doodle Art",
+                    "Double Exposure",
+                    "Dripping Paint Splatter Art",
+                    "Expressionism",
+                    "Faded Polaroid Photo",
+                    "Fauvism",
+                    "Flat 2D Art",
+                    "Fortnite Art Style",
+                    "Futurism",
+                    "Glitchcore",
+                    "Glo Fi",
+                    "Googie Art Style",
+                    "Graffiti Art",
+                    "Harlem Renaissance Art",
+                    "High Fashion",
+                    "Idyllic",
+                    "Impressionism",
+                    "Infographic Drawing",
+                    "Ink Dripping Drawing",
+                    "Japanese Ink Drawing",
+                    "Knolling Photography",
+                    "Light Cheery Atmosphere",
+                    "Logo Design",
+                    "Luxurious Elegance",
+                    "Macro Photography",
+                    "Mandola Art",
+                    "Marker Drawing",
+                    "Medievalism",
+                    "Minimalism",
+                    "Neo Baroque",
+                    "Neo Byzantine",
+                    "Neo Futurism",
+                    "Neo Impressionism",
+                    "Neo Rococo",
+                    "Neoclassicism",
+                    "Op Art",
+                    "Ornate And Intricate",
+                    "Pencil Sketch Drawing",
+                    "Pop Art 2",
+                    "Rococo",
+                    "Silhouette Art",
+                    "Simple Vector Art",
+                    "Sketchup",
+                    "Steampunk 2",
+                    "Surrealism",
+                    "Suprematism",
+                    "Terragen",
+                    "Tranquil Relaxing Atmosphere",
+                    "Sticker Designs",
+                    "Vibrant Rim Light",
+                    "Volumetric Lighting",
+                    "Watercolor 2",
+                    "Whimsical And Playful"
+                ],
+                "title": "FooocusStyle"
+            },
+            "GeneratedImageBase64": {
+                "properties": {
+                    "base64": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Base64",
+                        "description": "Image encoded in base64, or null if finishReasen is not 'SUCCESS'"
+                    },
+                    "seed": {
+                        "type": "integer",
+                        "title": "Seed",
+                        "description": "The seed associated with this image"
+                    },
+                    "finish_reason": {
+                        "$ref": "#/components/schemas/GenerationFinishReason"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "base64",
+                    "seed",
+                    "finish_reason"
+                ],
+                "title": "GeneratedImageBase64"
+            },
+            "GenerationFinishReason": {
+                "type": "string",
+                "enum": [
+                    "SUCCESS",
+                    "QUEUE_IS_FULL",
+                    "USER_CANCEL",
+                    "ERROR"
+                ],
+                "title": "GenerationFinishReason"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "Lora": {
+                "properties": {
+                    "model_name": {
+                        "type": "string",
+                        "title": "Model Name"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "title": "Weight",
+                        "default": 0.5,
+                        "max": 2,
+                        "min": -2
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "model_name"
+                ],
+                "title": "Lora"
+            },
+            "PerfomanceSelection": {
+                "type": "string",
+                "enum": [
+                    "Speed",
+                    "Quality"
+                ],
+                "title": "PerfomanceSelection"
+            },
+            "Text2ImgRequest": {
+                "properties": {
+                    "prompt": {
+                        "type": "string",
+                        "title": "Prompt",
+                        "default": ""
+                    },
+                    "negative_prompt": {
+                        "type": "string",
+                        "title": "Negative Prompt",
+                        "default": ""
+                    },
+                    "style_selections": {
+                        "items": {
+                            "$ref": "#/components/schemas/FooocusStyle"
+                        },
+                        "type": "array",
+                        "title": "Style Selections",
+                        "default": [
+                            "Fooocus V2",
+                            "Default (Slightly Cinematic)"
+                        ]
+                    },
+                    "performance_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PerfomanceSelection"
+                            }
+                        ],
+                        "default": "Speed"
+                    },
+                    "aspect_ratios_selection": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AspectRatio"
+                            }
+                        ],
+                        "default": "1152×896"
+                    },
+                    "image_number": {
+                        "type": "integer",
+                        "title": "Image Number",
+                        "description": "Image number",
+                        "default": 1,
+                        "max": 32,
+                        "min": 1
+                    },
+                    "image_seed": {
+                        "type": "integer",
+                        "title": "Image Seed",
+                        "description": "Seed to generate image, -1 for random",
+                        "default": -1
+                    },
+                    "sharpness": {
+                        "type": "number",
+                        "title": "Sharpness",
+                        "default": 2,
+                        "max": 30,
+                        "min": 0
+                    },
+                    "guidance_scale": {
+                        "type": "number",
+                        "title": "Guidance Scale",
+                        "default": 7,
+                        "max": 30,
+                        "min": 1
+                    },
+                    "base_model_name": {
+                        "type": "string",
+                        "title": "Base Model Name",
+                        "default": "sd_xl_base_1.0_0.9vae.safetensors"
+                    },
+                    "refiner_model_name": {
+                        "type": "string",
+                        "title": "Refiner Model Name",
+                        "default": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                    },
+                    "loras": {
+                        "items": {
+                            "$ref": "#/components/schemas/Lora"
+                        },
+                        "type": "array",
+                        "maxItems": 5,
+                        "title": "Loras",
+                        "default": [
+                            {
+                                "model_name": "sd_xl_offset_example-lora_1.0.safetensors",
+                                "weight": 0.5
+                            }
+                        ]
+                    }
+                },
+                "type": "object",
+                "title": "Text2ImgRequest"
+            },
+            "UpscaleOrVaryMethod": {
+                "type": "string",
+                "enum": [
+                    "Vary (Subtle)",
+                    "Vary (Strong)",
+                    "Upscale (1.5x)",
+                    "Upscale (2x)",
+                    "Upscale (Fast 2x)"
+                ],
+                "title": "UpscaleOrVaryMethod"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}
