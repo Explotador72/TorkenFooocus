@@ -1,14 +1,13 @@
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
 from importlib.util import find_spec
 
 from fooocus_api_version import version
-from fooocusapi.repositories_version import (comfy_commit_hash,
-                                              fooocus_commit_hash,
-                                              fooocus_version)
+from fooocusapi.repositories_versions import fooocus_commit_hash
 
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 
