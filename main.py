@@ -233,7 +233,6 @@ def prepare_environments(args) -> bool:
     if args.sync_repo is not None:
         if args.sync_repo == 'only':
             print("Only download and sync depent repositories")
-            download_repositories()
             models_path = os.path.join(
                 script_path, dir_repos, fooocus_name, "models")
             print(
