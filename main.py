@@ -133,12 +133,6 @@ def download_repositories():
     if https_proxy != None:
         print(f"Using https proxy for git clone: {https_proxy}")
         os.environ['https_proxy'] = https_proxy
-
-    # Check and download ComfyUI
-    comfy_repo = os.environ.get(
-        'COMFY_REPO', "https://github.com/comfyanonymous/ComfyUI")
-    git_clone(comfy_repo, repo_dir(comfyui_name),
-              "Inference Engine", comfy_commit_hash)
     
     # Check and download Fooocus
     fooocus_repo = os.environ.get(
