@@ -6,7 +6,7 @@ import sys
 from importlib.util import find_spec
 
 from fooocus_api_version import version
-from Fooocus_api.repository_version import (comfy_commit_hash,
+from fooocusapi.repository_version import (comfy_commit_hash,
                                               fooocus_commit_hash,
                                               fooocus_version)
 
@@ -270,5 +270,5 @@ if __name__ == "__main__":
         ini_comfy_args()
 
         # Start api server
-        from Fooocus_api.api import start_app
+        from fooocusapi.api import start_app
         start_app(args)
