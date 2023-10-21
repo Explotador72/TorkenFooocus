@@ -6,7 +6,7 @@ import sys
 from importlib.util import find_spec
 
 from fooocus_api_version import version
-from fooocusapi.repository_version import (comfy_commit_hash,
+from fooocusapi.repositories_version import (comfy_commit_hash,
                                               fooocus_commit_hash,
                                               fooocus_version)
 
