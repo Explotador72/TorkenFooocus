@@ -175,7 +175,18 @@ if __name__ == "__main__":
     print(f"Python {sys.version}")
     print(f"Fooocus-API version: {version}")
 
-   
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--port", type=int, default=8888,
+                        help="Set the listen port")
+    parser.add_argument("--host", type=str,
+                        default='127.0.0.1', help="Set the listen host")
+    parser.add_argument("--log-level", type=str,
+                        default='info', help="Log info for Uvicorn")
+    parser.add_argument("--sync-repo", default=None,
+                        help="Sync dependent git repositories to local, 'skip' for skip sync action, 'only' for only do the sync action and not launch app")
+    parser.add_argument("--preload-pipeline", default=False, action="store_true", help="True for preload pipeline before start http server")
+
+    args = parser.parse_args()
 
     if prepare_environments(args):
         sys.argv = [sys.argv[0]]
