@@ -220,7 +220,7 @@ def prepare_environments(args) -> bool:
     # Check if need pip install
     requirements_file = 'requirements.txt'
     if not requirements_met(requirements_file):
-        run_pip(f"install -r \"{requirements_file}\"", "requirements")
+        run_pip(f"install -r \"{requirements_file}\"", "requirements", " 2>&1 >/dev/null")
 
     if not is_installed("torch") or not is_installed("torchvision"):
         print(f"torch_index_url: {torch_index_url}")
